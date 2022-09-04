@@ -1,6 +1,6 @@
 /*
-  Simple MTP example that will add a RAM and Flash drive plus handles allowing you to insert one or more USB drives
-  and shows those as well.
+  Simple MTP example that will add a RAM and Flash drive plus handles allowing you to insert one or more USB drives and
+  one SD card formated as FAT or EXT4 and shows those as well. 
 
 */
 #include <MTP_Teensy.h>
@@ -142,10 +142,10 @@ void setup() {
     Serial.printf("Set Storage Index ext4 drive 1 to %u\n", estore);
   }
 
-  if(!myext4fs2.begin(sdb1)) { // Setup for second partition on sdb (if there). 
-    Serial.printf("myext4fs2.begin(%s) Failed: Drive plugged in?\n",mpName[sdb1]);
+  if(!myext4fs2.begin(sda2)) { // Setup for second partition on sdb (if there). 
+    Serial.printf("myext4fs2.begin(%s) Failed: Drive plugged in?\n",mpName[sda2]);
   } else {
-    Serial.printf("myext4fs2.begin(%s): passed...\n", mpName[sdb1]);
+    Serial.printf("myext4fs2.begin(%s): passed...\n", mpName[sda2]);
     estore = MTP.addFilesystem(myext4fs2, (const char *)myext4fs2.getVolumeLabel());
     Serial.printf("Set Storage Index drive 2 to %u\n", estore);
   }
